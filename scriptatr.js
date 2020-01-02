@@ -91,4 +91,20 @@ $(".enter").on("click", function (event) {
           $("iframe").attr("src", response.data[0].embed_url);
           $("#giphylink2").attr("href", response.data[0].url);
       });
+        // Basketball API stats call from mySportsFeed
+    //   $.ajax({
+    //     type: "GET",
+    //     url: "https://api.mysportsfeeds.com/v2.1/pull/nba/current/player_stats_totals.json",
+    //     dataType: 'json',
+    //     async: false,
+    //     headers: {
+    //       "Authorization": "Basic " + btoa("2dee32d7-5f8d-4bae-9272-ed5518" + ":" + "MYSPORTSFEEDS")
+    //     },
+    //     data: '{ "comment" }',
+    //     success: function (){
+    //       alert('Thanks for your comment!'); 
+    //     }
+    //   });
+    //   console.log(playerStatsTotals);
+      
   });
