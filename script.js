@@ -8,7 +8,11 @@ $("#select-player").on("click", function(event) {
   };
     
     $.ajax(settings).done(function (response) {
-    console.log(response.data[0].first_name);
+    console.log(response.data[0]);
+    var playerFirst = $("<h1>").text(response.data[0].first_name);
+    var playerLast = $("<h1>").text(response.data[0].last_name);
+    
+      $("#player-vitals").append(playerFirst, playerLast);
   });
 
 });
