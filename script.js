@@ -6,7 +6,7 @@ $("#select-player").on("click", function(event) {
     "method": "GET",
     "timeout": 0,
   };
-    
+    //first ajax call
     $.ajax(settings).done(function (response) {
     console.log(response.data[0]);
     var playerFirst = $("<h1>").text(response.data[0].first_name);
