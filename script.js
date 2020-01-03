@@ -10,7 +10,7 @@ $("#select-player").on("click", function(event) {
   $.ajax(settings).done(function (response) {
   console.log(response.data[0]);
   var playerID = (response.data[0].id);
-  var playerCity = (response.data[0].first_name + response.data[0].last_name);
+  var playerCity = (response.data[0].first_name + " " + response.data[0].last_name) + " dunk";
   console.log(playerCity);
   console.log(playerID);
   
@@ -55,3 +55,12 @@ $("#select-player").on("click", function(event) {
           $("iframe").attr("src", response.data[0].embed_url);
           $("#giphylink2").attr("href", response.data[0].url);
       });
+
+  
+});
+  });
+
+  
+  
+
+});
