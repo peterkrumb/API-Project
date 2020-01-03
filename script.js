@@ -1,3 +1,4 @@
+
 // $(".enter").on("click", function (event) {
 //     event.preventDefault();
 //     var player = $("#textarea1").val().trim();
@@ -129,3 +130,4 @@ $(".enter").on("click", function (event) {
     //     }
     //   });
     //   console.log(playerStatsTotals);
+

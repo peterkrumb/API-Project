@@ -1,8 +1,10 @@
+
 button{
     /* position: absolute; */
     /* top: 50%;
     left: 50%; */
     /* transform: translate(-50%, -50%); */
+
     width: 200px;
     height: 60px;
     text-align: center;
@@ -19,7 +21,10 @@ button{
     z-index: 1;
 }
 
+
 button:hover{
+
+
     animation: animate 8s linear infinite;
 }
 @keyframes animate{
@@ -29,9 +34,15 @@ button:hover{
     100%
     {background-position: 400%;}
 }
+
 button:before{
     content: '';
     /* position: absolute; */
+
+
+    content: '';
+    /* position: absolute; */
+
     top: -5px;
     left: -5px;
     right: -5px;
@@ -43,8 +54,13 @@ button:before{
     opacity: 0;
     transition: 0.5s;
 }
+
 button:hover:before{
+
+
 filter: blur(20px);
 opacity: 1;
 animation: animate 8s linear infinite;
 }
+
+
