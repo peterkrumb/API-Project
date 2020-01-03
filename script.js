@@ -79,7 +79,8 @@ var data = {"atlanta": 1, "boston": 2, "brooklyn": 3, "charlotte": 4, "chicago":
 $(".enter").on("click", function (event) {
       event.preventDefault();
       var player = $("#textarea1").val().trim();
-      
+      $("h1").text("")
+
       console.log(player);
       var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rQLAu0nfEnZbuhYVAVBwo4O6Rv3Ydn1c&q="+player+"&limit=1&offset=0&rating=G&lang=en"
 
@@ -102,8 +103,16 @@ $(".enter").on("click", function (event) {
         //first ajax call
         $.ajax(settings).done(function (response) {
         $(".teamName").text(response.full_name);
+        // console.log($(".teamName").text(response.full_name))
+        // if ($(".teamName").text()===null){
+        //   $("iframe").attr("src", "");
+        //   $("#giphylink2").attr("href", "");
+        // }
       });
-    
+      // if ($(".teamName").text()===null){
+      //   $("iframe").attr("src", "");
+      //   $("#giphylink2").attr("href", "");
+      // }
     });
         // Basketball API stats call from mySportsFeed
     //   $.ajax({
