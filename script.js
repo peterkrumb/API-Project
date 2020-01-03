@@ -4,25 +4,44 @@ $("#select-player").on("click", function(event) {
     var settings = {
     "url": "https://balldontlie.io/api/v1/players?search=" + playerName,
     "method": "GET",
-    "timeout": 0,
-  };
+    "timeout": 0,};
+
     //first ajax call
     $.ajax(settings).done(function (response) {
     console.log(response.data[0]);
-    var playerFirst = $("<h1>").text(response.data[0].first_name);
-    var playerLast = $("<h1>").text(response.data[0].last_name);
+    var playerID = (response.data[0].id);
+    console.log(playerID);
+
+    var settings2 = {
+      "url": "https://balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=" + playerID,
+      "method": "GET",
+      "timeout": 0,
+    };
+    $.ajax(settings2).done(function (response2) {
+      console.log(response2);
+
     
-      $("#player-vitals").append(playerFirst, playerLast);
+
+    //var playerFirst = $("<h1>").text(response.data[0].first_name);
+    //var playerLast = $("<h1>").text(response.data[0].last_name);
+    
+      //$("#player-vitals").append(playerFirst, playerLast);
   });
+    });
+
+    
+    
 
 });
 
 // added to test
 
-// $.ajax
+
+// function call(){
+//  $.ajax
 // ({
 //   type: "GET",
-//   url: "https://api.mysportsfeeds.com/v2.1/pull/nba/2019-2020-regular/player_stats_totals.json",
+//   url: "https://api.mysportsfeeds.com/v2.1/pull/nba/2018-2019-regular/player_stats_totals.json",
 //   dataType: 'json',
 //   async: false,
 //   headers: {
@@ -31,7 +50,10 @@ $("#select-player").on("click", function(event) {
 //   data: '{ "comment" }',
 //   success: function (){
 //     alert('Thanks for your comment!'); 
+//   },
+//   failure: function(){
+//     console.log("fail")
 //   }
-// });
-  
-  
+// }); 
+// }
+// call()
