@@ -73,6 +73,8 @@
 //   gapi.load("client:auth2", function() {
 //     gapi.auth2.init({client_id: "168910596445-sd2jatdfri0kr63pkuqtaqshjtrm33k5.apps.googleusercontent.com"});
 //   });
+var data = {"atlanta": 1, "boston": 2, "brooklyn": 3, "charlotte": 4, "chicago": 5, "cleveland": 6, "dallas": 7, "denver": 8, "detroit": 9, "golden state": 10, "houston":11, "indiana": 12, "la": 13, "los angeles": 14, "memphis": 15, "miami": 16, "milwaukee": 17, "minnesota": 18, "new orleans": 19, "new york": 20, "oklahoma city": 21, "orlando": 22, "philadelphia": 23, "phoenix": 24, "portland": 25, "sacramento": 26, "san antonio": 27, "toronto": 28, "utah": 29, "washington": 30};
+
 
 $(".enter").on("click", function (event) {
       event.preventDefault();
@@ -91,6 +93,18 @@ $(".enter").on("click", function (event) {
           $("iframe").attr("src", response.data[0].embed_url);
           $("#giphylink2").attr("href", response.data[0].url);
       });
+
+        var settings = {
+        "url": "https://www.balldontlie.io/api/v1/teams/"+ data[player.toLowerCase()],
+        "method": "GET",
+        "timeout": 0,
+      };
+        //first ajax call
+        $.ajax(settings).done(function (response) {
+        $(".teamName").text(response.full_name);
+      });
+    
+    });
         // Basketball API stats call from mySportsFeed
     //   $.ajax({
     //     type: "GET",
@@ -106,5 +120,3 @@ $(".enter").on("click", function (event) {
     //     }
     //   });
     //   console.log(playerStatsTotals);
-      
-  });
