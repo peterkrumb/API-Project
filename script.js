@@ -79,37 +79,65 @@ var data = {"atlanta": 1, "boston": 2, "brooklyn": 3, "charlotte": 4, "chicago":
 
 $(".enter").on("click", function (event) {
       event.preventDefault();
-      var player = $("#textarea1").val().trim();
+      var team = $("#textarea1").val().trim();
       $("h1").text("")
 
-      console.log(player);
-      var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rQLAu0nfEnZbuhYVAVBwo4O6Rv3Ydn1c&q="+player+"&limit=1&offset=0&rating=G&lang=en"
-
-      $.ajax({
-          url: queryURL,
-          method: "GET"
-      }).then(function (response) {
-          console.log(response.data[0].url);
-          console.log(response);
-        //   $(".video").text(response.data[0].url);
-          $("iframe").attr("src", response.data[0].embed_url);
-          $("#giphylink2").attr("href", response.data[0].url);
-      });
-
-        var settings = {
-        "url": "https://www.balldontlie.io/api/v1/teams/"+ data[player.toLowerCase()],
+      var settings = {
+        "url": "https://www.balldontlie.io/api/v1/teams/"+ data[team.toLowerCase()],
         "method": "GET",
         "timeout": 0,
       };
         //first ajax call
         $.ajax(settings).done(function (response) {
         $(".teamName").text(response.full_name);
+        // var x = Math.floor(Math.random()*4)
+
+      console.log(team);
+      
+      var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=rQLAu0nfEnZbuhYVAVBwo4O6Rv3Ydn1c&q="+response.full_name+"&limit=1&offset=0&rating=G&lang=en"
+      console.log(response.full_name);
+      console.log(response);
+      
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+      }).then(function (response2) {
+          console.log(response2.data[0].url);
+          console.log(response2);
+        //   $(".video").text(response.data[0].url);
+          $("iframe").attr("src", response2.data[0].embed_url);
+          $("#giphylink2").attr("href", response2.data[0].url);
+      
+      }).catch(function(err) {
+        console.log(err)
+        $("iframe").attr("src", "");
+        $("#giphylink2").attr("href", "");
+      })
+    
+    // else{
+    //       $("iframe").attr("src", "");
+    //       $("#giphylink2").attr("href", "");
+    // }
+    
+
+      //   var settings = {
+      //   "url": "https://www.balldontlie.io/api/v1/teams/"+ data[team.toLowerCase()],
+      //   "method": "GET",
+      //   "timeout": 0,
+      // };
+      //   //first ajax call
+      //   $.ajax(settings).done(function (response) {
+      //   $(".teamName").text(response.full_name);
         // console.log($(".teamName").text(response.full_name))
         // if ($(".teamName").text()===null){
         //   $("iframe").attr("src", "");
         //   $("#giphylink2").attr("href", "");
         // }
-      });
+      }).catch(function(err) {
+        console.log(err)
+        $("iframe").attr("src", "");
+        $("#giphylink2").attr("href", "");
+      })
       // if ($(".teamName").text()===null){
       //   $("iframe").attr("src", "");
       //   $("#giphylink2").attr("href", "");
@@ -130,4 +158,4 @@ $(".enter").on("click", function (event) {
     //     }
     //   });
     //   console.log(playerStatsTotals);
-
+  
