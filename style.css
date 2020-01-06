@@ -1,3 +1,19 @@
+body{
+    background-color: gray;
+    color: whitesmoke;
+    font-family: righteous ;
+}
+
+h1{
+    display: flex;
+  justify-content: center;
+}
+
+
+.flex-container{
+    display: flex;
+  /* justify-content: center; */
+}
 
 button{
     /* position: absolute; */
